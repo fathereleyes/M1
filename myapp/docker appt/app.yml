@@ -1,0 +1,17 @@
+#get python
+FROM python:3.6-slim
+
+RUN pip install --trusted-host pypi.python.org flask
+
+#get openjdk
+
+FROM openjdk:slim
+
+
+COPY . /targetdir
+WORKDIR /targetdir
+
+# Make port 81 available to the world outside this container
+EXPOSE 81
+
+CMD ["python", "test.py"]
