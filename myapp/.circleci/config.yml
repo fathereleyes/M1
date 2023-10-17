@@ -494,7 +494,7 @@ workflows:
       # - cloudfront-update:
       #     requires: [smoke-test]
       # - cleanup:
-      #     requires: [cloudfront-update]        
+      #     requires: [cloudfront-update]git         
 
 
 
@@ -508,10 +508,6 @@ workflows:
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
 
         
 ## commands:
@@ -703,8 +699,8 @@ workflows:
       - image: cimg/node:13.8.0
            
     steps:
-     - checkout
-     - restore_cache:
+      - checkout
+      - restore_cache:
           keys:
             - backend-deps-{{ checksum "backend/package-lock.json" }}
     #  - restore_cache:
@@ -945,10 +941,10 @@ workflows:
 #               # your code here
 #             fi
             
-
 workflows:
-  default:
+    say-hello-workflow:
     jobs:
+      - say-hello
       - build-frontend
       - build-backend
       - test-frontend:
